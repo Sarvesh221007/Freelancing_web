@@ -1,0 +1,12 @@
+# Node modules
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build output
+dist/
+build/
+.cache/
+.next/4
+.env
+.DS_Store
