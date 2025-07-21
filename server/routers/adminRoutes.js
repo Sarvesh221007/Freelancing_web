@@ -14,7 +14,7 @@ router.get('/users', adminMiddleware, async (req, res) => {
   }
 });
 
-// ✅ TOGGLE Block/Unblock User
+
 router.patch('/users/:id/toggle', adminMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
