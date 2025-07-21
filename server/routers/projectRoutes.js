@@ -146,7 +146,7 @@ router.post("/:id/submit", authMiddleware, async (req, res) => {
   }
 });
 
-// Client submits feedback for a completed project
+
 router.post("/:id/feedback", authMiddleware, async (req, res) => {
   const { rating, message } = req.body;
 
