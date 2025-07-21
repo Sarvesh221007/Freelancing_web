@@ -26,7 +26,7 @@ router.patch('/users/:id/toggle', adminMiddleware, async (req, res) => {
   }
 });
 
-// Delete a project
+
 router.delete('/projects/:id', adminMiddleware, async (req, res) => {
   await Project.findByIdAndDelete(req.params.id);
   res.json({ msg: 'Project deleted' });
