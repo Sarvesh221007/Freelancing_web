@@ -7,7 +7,7 @@ const Project = require('../models/Project');
 
 router.get('/users', adminMiddleware, async (req, res) => {
   try {
-    const users = await User.find({}); // optionally exclude self
+    const users = await User.find({}); 
     res.json(users);
   } catch (err) {
     res.status(500).json({ msg: 'Server error' });
