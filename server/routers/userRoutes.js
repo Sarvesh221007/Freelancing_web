@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require('../models/User');
 const Project = require('../models/Project');
 
-// GET /api/users/:id – Get freelancer public profile
+
 router.get('/:id', async (req, res) => {
   try {
     const user = await User.findById(req.params.id).select('name email avgRating');
