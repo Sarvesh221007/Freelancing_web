@@ -97,7 +97,7 @@ router.get("/my", authMiddleware, async (req, res) => {
       .populate("bids.freelancer", "name")
       .populate("selectedFreelancer", "name")
       .populate("feedback");
-    console.log("Projects found:", projects); // Add this
+    console.log("Projects found:", projects); 
     res.json(projects);
   } catch (err) {
     console.error("Fetch error:", err); // Add this
