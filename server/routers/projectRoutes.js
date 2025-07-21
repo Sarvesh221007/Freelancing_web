@@ -42,7 +42,7 @@ router.post("/create", authMiddleware, async (req, res) => {
   }
 });
 
-// In projectRoutes.js
+
 
 router.get("/all", authMiddleware, async (req, res) => {
   try {
@@ -57,7 +57,7 @@ router.get("/all", authMiddleware, async (req, res) => {
   }
 });
 
-// Place a bid on a project
+
 router.post("/:id/bid", authMiddleware, async (req, res) => {
   try {
     const { amount, message } = req.body;
@@ -89,7 +89,7 @@ router.post("/:id/bid", authMiddleware, async (req, res) => {
   }
 });
 
-// Get all projects posted by the logged-in client
+
 router.get("/my", authMiddleware, async (req, res) => {
   try {
     console.log("Fetching projects for user:", req.user.id); // Add this
@@ -105,7 +105,7 @@ router.get("/my", authMiddleware, async (req, res) => {
   }
 });
 
-// Select a winning freelancer
+
 router.post("/:id/select", authMiddleware, async (req, res) => {
   const { freelancerId } = req.body;
   try {
@@ -176,7 +176,7 @@ router.get("/freelancer/:id", authMiddleware, async (req, res) => {
   try {
     const freelancerId = req.params.id;
 
-    // Find user
+    
     const user = await User.findById(freelancerId).select("-password");
     if (!user || user.role !== "freelancer") {
       return res.status(404).json({ msg: "Freelancer not found" });
