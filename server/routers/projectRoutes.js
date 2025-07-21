@@ -3,7 +3,7 @@ const router = express.Router();
 const Project = require("../models/Project");
 const jwt = require("jsonwebtoken");
 // const authMiddleware = require('../middleware/auth');
-const User = require("../models/User"); // Make sure user model is imported
+const User = require("../models/User");
 
 function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
@@ -11,7 +11,7 @@ function authMiddleware(req, res, next) {
     return res.status(401).json({ msg: "No token, auth denied" });
   }
 
-  const token = authHeader.split(" ")[1]; // ✅ remove "Bearer " prefix
+  const token = authHeader.split(" ")[1]; 
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -23,7 +23,7 @@ function authMiddleware(req, res, next) {
   }
 }
 
-// backend/routes/projects.js
+
 router.post("/create", authMiddleware, async (req, res) => {
   try {
     const { title, description, category, budget } = req.body;
