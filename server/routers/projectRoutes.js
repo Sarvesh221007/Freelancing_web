@@ -3,7 +3,7 @@ const router = express.Router();
 const Project = require("../models/Project");
 const jwt = require("jsonwebtoken");
 // const authMiddleware = require('../middleware/auth');
-const User = require("../models/User"); // Make sure user model is imported
+const User = require("../models/User");
 
 function authMiddleware(req, res, next) {
   const authHeader = req.headers.authorization;
@@ -11,7 +11,7 @@ function authMiddleware(req, res, next) {
     return res.status(401).json({ msg: "No token, auth denied" });
   }
 
-  const token = authHeader.split(" ")[1]; // ✅ remove "Bearer " prefix
+  const token = authHeader.split(" ")[1]; 
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
@@ -23,7 +23,7 @@ function authMiddleware(req, res, next) {
   }
 }
 
-// backend/routes/projects.js
+
 router.post("/create", authMiddleware, async (req, res) => {
   try {
     const { title, description, category, budget } = req.body;
@@ -42,7 +42,7 @@ router.post("/create", authMiddleware, async (req, res) => {
   }
 });
 
-// In projectRoutes.js
+
 
 router.get("/all", authMiddleware, async (req, res) => {
   try {
@@ -57,7 +57,7 @@ router.get("/all", authMiddleware, async (req, res) => {
   }
 });
 
-// Place a bid on a project
+
 router.post("/:id/bid", authMiddleware, async (req, res) => {
   try {
     const { amount, message } = req.body;
@@ -89,7 +89,7 @@ router.post("/:id/bid", authMiddleware, async (req, res) => {
   }
 });
 
-// Get all projects posted by the logged-in client
+
 router.get("/my", authMiddleware, async (req, res) => {
   try {
     console.log("Fetching projects for user:", req.user.id); // Add this
@@ -97,7 +97,7 @@ router.get("/my", authMiddleware, async (req, res) => {
       .populate("bids.freelancer", "name")
       .populate("selectedFreelancer", "name")
       .populate("feedback");
-    console.log("Projects found:", projects); // Add this
+    console.log("Projects found:", projects); 
     res.json(projects);
   } catch (err) {
     console.error("Fetch error:", err); // Add this
@@ -105,7 +105,7 @@ router.get("/my", authMiddleware, async (req, res) => {
   }
 });
 
-// Select a winning freelancer
+
 router.post("/:id/select", authMiddleware, async (req, res) => {
   const { freelancerId } = req.body;
   try {
@@ -146,7 +146,7 @@ router.post("/:id/submit", authMiddleware, async (req, res) => {
   }
 });
 
-// Client submits feedback for a completed project
+
 router.post("/:id/feedback", authMiddleware, async (req, res) => {
   const { rating, message } = req.body;
 
@@ -176,7 +176,7 @@ router.get("/freelancer/:id", authMiddleware, async (req, res) => {
   try {
     const freelancerId = req.params.id;
 
-    // Find user
+    
     const user = await User.findById(freelancerId).select("-password");
     if (!user || user.role !== "freelancer") {
       return res.status(404).json({ msg: "Freelancer not found" });
