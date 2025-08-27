@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.42a90a53.css",
+    "main.css": "/static/css/main.2d3bf326.css",
     "main.js": "/static/js/main.7f4d0eda.js",
     "static/media/freelance-hero.jpg": "/static/media/freelance-hero.3c99d49146da4e95f394.jpg",
     "index.html": "/index.html",
-    "main.42a90a53.css.map": "/static/css/main.42a90a53.css.map",
+    "main.2d3bf326.css.map": "/static/css/main.2d3bf326.css.map",
     "main.7f4d0eda.js.map": "/static/js/main.7f4d0eda.js.map"
   },
   "entrypoints": [
-    "static/css/main.42a90a53.css",
+    "static/css/main.2d3bf326.css",
     "static/js/main.7f4d0eda.js"
   ]
 }
